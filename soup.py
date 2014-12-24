@@ -7,11 +7,13 @@ root = Tk()
 root.title('Soup Scraper')
 
 #*** Body ***
-bod = Frame(root)
+bod = Frame(root, bg='grey')
 bod.pack()
 
-#Text scraper button
+#*** Guts ***
 def Textscrape():
+    """Scrapes destination provided by user and returns text in new text window"""
+
     url = UrlEntry.get()
     r = requests.get(url)
     data = r.text
@@ -29,8 +31,9 @@ def Textscrape():
     output_window.geometry('600x500')
 
 
-#Link scraper button
 def linkscrape():
+    """Scrapes destination provided by user and returns links in new text window"""
+
     url = UrlEntry.get()
     r = requests.get(url)
     data = r.text
@@ -44,22 +47,27 @@ def linkscrape():
     output_text2.pack(side=RIGHT, fill=Y)
     sb2.config(command=output_text2.yview)
     output_text2.config(yscrollcommand=sb2.set)
-    output_text2.insert(END, links)
+    output_text2.insert(1.1, links)
     output_window2.title('Scraper Results')
     output_window2.geometry('600x500')
 
+#*** Label ***
+UrlLabel = Label(bod, text='Please enter URL here:', bg='grey', fg='black')
+UrlLabel.grid(row=1, column=0)
 
-UrlLabel = Label(bod, text='Please enter URL here:', bg='white', fg='black')
+#*** Blank ***
 UrlEntry = ttk.Entry(bod)
+UrlEntry.grid(row=1, column=1)
+
+#*** Buttons ***
 UrlSubmit = ttk.Button(bod, text='Text', command=Textscrape)
 UrlSubmit2 = ttk.Button(bod, text='Links', command=linkscrape)
 UrlCancel = ttk.Button(bod, text='Cancel', command=root.quit)
-
-UrlLabel.grid(row=1, column=0)
-UrlEntry.grid(row=1, column=1)
 UrlSubmit.grid(row=1, column=3)
 UrlSubmit2.grid(row=1, column=4)
 UrlCancel.grid(row=1, column=5)
+
+
 
 
 
