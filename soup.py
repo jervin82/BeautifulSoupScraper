@@ -39,9 +39,14 @@ def linkscrape():
     soup = BeautifulSoup(data)
     for link in soup.find_all('a'):
         links = (link.get('href'))
-    output_text2 = Text(screen)
-    output_text2.pack(side=RIGHT, fill=Y)
-    output_text2.insert(10.10, links)
+        print links
+        output_text2 = Text(screen)
+        output_text2.pack(side=BOTTOM)
+        output_text2.insert(10.10, links)
+    sb = Scrollbar(screen)
+    sb.pack(side=RIGHT, fill=Y)
+    sb.config(command=output_text2.yview)
+    output_text2.config(yscrollcommand=sb.set)
 
 #*** Label ***
 UrlLabel = Label(bod, text='Please enter URL here:', bg='grey', fg='black')
