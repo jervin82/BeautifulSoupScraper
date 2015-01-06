@@ -40,18 +40,12 @@ def linkscrape():
     soup = BeautifulSoup(data)
     for link in soup.find_all('a'):
         links = (link.get('href'))
-        print links
-
-
-def printscrape():
-    links2 = linkscrape()
-    print links2
-    sb2 = Scrollbar(screen)
-    sb2.pack(side=RIGHT, fill=Y)
-    output_text2 = Text(screen, yscrollcommand=sb2.set)
-    output_text2.pack(side=TOP)
-    output_text2.insert(10.10, links2)
-    sb2.config(command=output_text2.yview)
+        sb2 = Scrollbar(screen)
+        sb2.pack(side=RIGHT, fill=Y)
+        output_text2 = Text(screen, yscrollcommand=sb2.set)
+        output_text2.pack(side=TOP)
+        output_text2.insert(END, links)
+        sb2.config(command=output_text2.yview)
 
 
 #*** Label ***
@@ -64,13 +58,11 @@ UrlEntry.grid(row=1, column=1)
 
 #*** Buttons ***
 UrlSubmit = ttk.Button(bod, text='Text', command=Textscrape)
-UrlSubmit2 = ttk.Button(bod, text='Links', command=printscrape)
+UrlSubmit2 = ttk.Button(bod, text='Links', command=linkscrape)
 UrlCancel = ttk.Button(bod, text='Cancel', command=root.quit)
 UrlSubmit.grid(row=1, column=3)
 UrlSubmit2.grid(row=1, column=4)
 UrlCancel.grid(row=1, column=5)
-
-
 
 root.mainloop()
 
