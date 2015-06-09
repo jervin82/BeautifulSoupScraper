@@ -9,8 +9,6 @@ root.title('Soup Scraper')
 #*** Body ***
 bod = Frame(root, bg='grey')
 bod.pack()
-screen = Frame(root, bg='white')
-screen.pack()
 
 
 #*** Guts ***
@@ -20,16 +18,11 @@ def Textscrape():
     url = UrlEntry.get()
     r = requests.get(url)
     data = r.text
-    soup = BeautifulSoup(data)
-    scrape = soup.text
-    outputtext = Text(screen)
-    outputtext.pack(side=LEFT)
-    outputtext.insert(END, scrape)
-    sb1 = Scrollbar(screen)
-    sb1.pack(side=RIGHT, fill=Y)
-    sb1.config(command=outputtext.yview)
-    outputtext.config(yscrollcommand=sb1.set)
-
+    soup = BeautifulSoup(data, "html5")
+    [s.extract() for s in soup('script')]
+    file = open('Textfile.txt', 'w')
+    file.write(soup.text.encode('utf-8'))
+    file.close()
 
 def linkscrape():
     """Scrapes destination provided by user and returns links in window"""
@@ -37,16 +30,12 @@ def linkscrape():
     url = UrlEntry.get()
     r = requests.get(url)
     data = r.text
-    soup = BeautifulSoup(data)
-    for link in soup.find_all('a'):
-        links = (link.get('href'))
-        sb2 = Scrollbar(screen)
-        sb2.pack(side=RIGHT, fill=Y)
-        output_text2 = Text(screen, yscrollcommand=sb2.set)
-        output_text2.pack(side=TOP)
-        output_text2.insert(END, links)
-        sb2.config(command=output_text2.yview)
-
+    soup = BeautifulSoup(data, "html5")
+    links = str(soup.findAll('a'))
+    file = open('Linkfile.txt', 'w')
+    file.write(links)
+    file.close()
+    
 
 #*** Label ***
 UrlLabel = Label(bod, text='Please enter URL here:', bg='grey', fg='black')
@@ -54,6 +43,7 @@ UrlLabel.grid(row=1, column=0)
 
 #*** Blank ***
 UrlEntry = ttk.Entry(bod)
+UrlEntry.insert(0, 'http://')
 UrlEntry.grid(row=1, column=1)
 
 #*** Buttons ***
