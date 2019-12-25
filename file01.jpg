@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>JJErvin.com -- About Me</title>
+	<base href="http://jjervin.com/media"> 
+	<link rel="stylesheet" type="text/css" href="http://jjervin.com/style.css" />
+	<meta charset="UTF-8">
+	<meta name="author" content="Jason Ervin">
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  	<META HTTP-EQUIV="Expires" CONTENT="-1">
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63345325-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>
+	<style type="text/css">
+		body {background-color: #000000;}
+	</style>
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<img src="media/mecloudblk.jpg" alt="Analyst, Dallasite, Nerd, SQL Dork, Craft Beer Nut, Bro, Nerd Bro, Terrible Gamer, Excel Jockey, Halsteader, Longhorn, Austin Refugee, Metroplexian, Nomad" height=400 width=400>
+	<p id="personalStatement">Welp, that about covers it! I'm not a ninja, a guru, a jedi or a rock star. I'm just a guy looking to grow and an Analyst learning to code. 
+	<br>
+	<br>
+	Hi, my name is Jason!</p>
+	<img id="EnchantedRock" src="media/ERockBW.jpg" alt="Jason Ervin at Enchanted Rock photo taken by Gary Prust" height=250>
+	<br>
+	<br>
+	<hr> 
+	<h1>About Me</h1>
+</body>
+</html>
